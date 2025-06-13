@@ -1,0 +1,81 @@
+<odoo>
+    <record id="view_membership_branch_form" model="ir.ui.view">
+        <field name="name">membership.branch.form</field>
+        <field name="model">membership.branch</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <field name="name"/>
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_membership_branch_tree" model="ir.ui.view">
+        <field name="name">membership.branch.tree</field>
+        <field name="model">membership.branch</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_membership_member_form" model="ir.ui.view">
+        <field name="name">membership.member.form</field>
+        <field name="model">membership.member</field>
+        <field name="groups_id" eval="[(4, ref('membership_management.group_membership_user'))]"/>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <field name="first_name"/>
+                    <field name="last_name"/>
+                    <field name="full_name_en" readonly="1"/>
+                    <field name="full_name_ar"/>
+                    <field name="branch_ids" widget="many2many_tags"/>
+                    <field name="renewal_date" readonly="1"/>
+                    <field name="status"/>
+                </group>
+            </form>
+        </field>
+    </record>
+
+
+    <record id="view_membership_member_tree" model="ir.ui.view">
+        <field name="name">membership.member.tree</field>
+        <field name="model">membership.member</field>
+        <field name="groups_id" eval="[(4, ref('membership_management.group_membership_user'))]"/>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="full_name_en"/>
+                <field name="full_name_ar"/>
+                <field name="renewal_date"/>
+                <field name="status"/>
+            </tree>
+        </field>
+    </record>
+
+
+    <odoo>
+
+    <!-- Define actions first -->
+    <record id="membership_branch_action" model="ir.actions.act_window">
+        <field name="name">Branches</field>
+        <field name="res_model">membership.branch</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="membership_member_action" model="ir.actions.act_window">
+        <field name="name">Members</field>
+        <field name="res_model">membership.member</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Now define menus after actions exist -->
+    <menuitem id="menu_membership_root" name="Membership" sequence="10"/>
+    <menuitem id="menu_membership_branch" name="Branches" parent="menu_membership_root" action="membership_branch_action"/>
+    <menuitem id="menu_membership_member" name="Members" parent="menu_membership_root" action="membership_member_action"/>
+
+</odoo>
+
+</odoo>

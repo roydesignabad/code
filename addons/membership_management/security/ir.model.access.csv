@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_branch_user,access.branch.user,model_membership_branch,group_membership_user,1,0,0,0
+access_branch_manager,access.branch.manager,model_membership_branch,group_membership_manager,1,1,1,1
+access_member_user,access.member.user,model_membership_member,group_membership_user,1,0,0,0
+access_member_manager,access.member.manager,model_membership_member,group_membership_manager,1,1,1,1

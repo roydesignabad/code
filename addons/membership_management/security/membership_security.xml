@@ -1,0 +1,8 @@
+<odoo>
+    <record id="group_membership_user" model="res.groups">
+        <field name="name">Membership User</field>
+    </record>
+    <record id="group_membership_manager" model="res.groups">
+        <field name="name">Membership Manager</field>
+    </record>
+</odoo>
